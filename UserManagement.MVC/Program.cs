@@ -11,7 +11,13 @@ using UserManagement.Persistence.Initializers;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation();
+
+builder.Services.ConfigureApplicationCookie(option =>
+{
+    option.LoginPath = "/Registration/Index";
+});
 
 builder.Services.AddAutoMapper(config =>
 {
@@ -28,6 +34,7 @@ builder.Services.AddIdentity<User, IdentityRole<long>>(options =>
     options.Password.RequireLowercase = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 1;
     options.User.RequireUniqueEmail = true;
     options.SignIn.RequireConfirmedEmail = false;
 }).AddEntityFrameworkStores<UserManagementDbContext>();
@@ -66,6 +73,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Registration}/{action=Index}/{id?}");
 
 app.Run();

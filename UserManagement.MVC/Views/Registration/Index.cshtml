@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using RegistrationViewModel = UserManagement.MVC.Models.RegistrationViewModel
+
+@model RegistrationViewModel
+
+<form asp-action="Index" asp-controller="Registration">
+    <div>
+        <label for="email">Email</label>
+        <input asp-for="Email" type="text" id="email">
+        <span asp-validation-for="Email"></span>
+        
+        <label for="name">Name</label>
+        <input asp-for="Name" type="text" id="name">
+        <span asp-validation-for="Name"></span>
+        
+        <label for="password">Password</label>
+        <input asp-for="Password" type="password" id="password">
+        <span asp-validation-for="Password"></span>
+        
+        <label for="confirm">Confirm password</label>
+        <input asp-for="PasswordConfirm" type="password" id="confirm">
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div>
+        <button type="submit">Log on</button>
+    </div>
+</form>
