@@ -6,23 +6,29 @@
 
 <form asp-action="Index" asp-controller="Registration">
     <div>
+       <span>@Html.ValidationMessage("UserExists")</span>
+    </div>
+    <div>
         <label for="email">Email</label>
         <input asp-for="Email" type="text" id="email">
         <span asp-validation-for="Email"></span>
-        
+    </div>
+    <div>
         <label for="name">Name</label>
         <input asp-for="Name" type="text" id="name">
         <span asp-validation-for="Name"></span>
-        
+    </div>
+    <div>
         <label for="password">Password</label>
         <input asp-for="Password" type="password" id="password">
         <span asp-validation-for="Password"></span>
-        
+    </div>
+    <div>
         <label for="confirm">Confirm password</label>
         <input asp-for="PasswordConfirm" type="password" id="confirm">
         <span asp-validation-for="PasswordConfirm"></span>
     </div>
     <div>
-        <button type="submit">Log on</button>
+        <button type="submit">Sign up</button>
     </div>
 </form>
