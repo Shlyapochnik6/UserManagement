@@ -36,7 +36,6 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, ModelStateD
             request.State.AddModelError("LockedUser", "The entered user is blocked");
             return request.State;
         }
-
         await _signInManager.SignInAsync(user, true);
         return request.State;
     }
