@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using LoginViewModel = UserManagement.MVC.Models.LoginViewModel
+
+@model LoginViewModel
+
+<form asp-action="Index" asp-controller="Login">
+    <div>
+        <span>@Html.ValidationMessage("NonexistentUser")</span>
+        <span>@Html.ValidationMessage("IncorrectPassword")</span>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input asp-for="Email" type="text" id="email">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input asp-for="Password" type="password" id="password">
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <button type="submit">Log on</button>
+    </div>
+</form>
+

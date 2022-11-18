@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AutoMapper;
+using UserManagement.Application.Common.Mappings;
 using UserManagement.Application.Queries.User.Login;
 
 namespace UserManagement.MVC.Models;
 
-public class LoginViewModel
+public class LoginViewModel : IMapWith<LoginUserQuery>
 {
     [Required]
     [EmailAddress(ErrorMessage = "Is not an e-mail")]
