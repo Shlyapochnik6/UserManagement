@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace UserManagement.Application.Queries.User.Login;

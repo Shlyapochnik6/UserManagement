@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using UserManagement.Application.Common.Constants;
+using UserManagement.Application.Queries.User.Constants;
 
 namespace UserManagement.Application.Queries.User.Login;
 
