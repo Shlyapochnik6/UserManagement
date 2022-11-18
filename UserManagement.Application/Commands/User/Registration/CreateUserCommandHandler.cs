@@ -18,7 +18,6 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
         _mapper = mapper;
     }
 
-    //Add registration time
     public async Task<bool> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var userExists = await _userManager.FindByEmailAsync(request.Email) == null;

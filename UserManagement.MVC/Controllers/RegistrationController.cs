@@ -32,9 +32,10 @@ public class RegistrationController : Controller
             return View(model);
         }
         var command = _mapper.Map<CreateUserCommand>(model);
-        var createUser = await _mediator.Send(command);
-        if (createUser == false)
+        var userCreation = await _mediator.Send(command);
+        if (userCreation == false)
         {
+            ModelState.AddModelError("UserExists", "The entered email is already exists");
             return View(model);
         }
         return RedirectToAction("Index", "Home");
