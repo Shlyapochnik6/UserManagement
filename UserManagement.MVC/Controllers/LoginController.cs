@@ -6,7 +6,7 @@ using UserManagement.MVC.Models;
 
 namespace UserManagement.MVC.Controllers;
 
-public class LoginController : Controller
+public class LoginController : BaseController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;

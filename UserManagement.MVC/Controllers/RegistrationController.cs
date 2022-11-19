@@ -7,7 +7,7 @@ using UserManagement.MVC.Models;
 
 namespace UserManagement.MVC.Controllers;
 
-public class RegistrationController : Controller
+public class RegistrationController : BaseController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
