@@ -3,6 +3,11 @@ dBtn.addEventListener('click', async function() {
     await SendServer("AdminPanel/Remove", getSelectedUsers());
 });
 
+let bBtn = document.getElementById('b-btn')
+bBtn.addEventListener('click', async function (){
+    await SendServer("AdminPanel/Block", getSelectedUsers())
+});
+
 async function SendServer(input, data){
     await fetch(input, {
         method: 'POST',

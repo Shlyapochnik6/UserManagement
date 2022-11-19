@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using UserManagement.Application.Commands.User.Blocking;
 using UserManagement.Application.Commands.User.Removing;
 using UserManagement.Application.Queries.User.GetListUsers;
 using UserManagement.Domain;
@@ -35,6 +36,18 @@ public class AdminPanelController : BaseController
         {
             SelectedUsers = selectedUsers,
             CurrentUserId = UserId
+        };
+        await _mediator.Send(command);
+        return RedirectToAction("Index", "AdminPanel");
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Block([FromBody] long[] selectedUsers)
+    {
+        var command = new BlockUserCommand
+        {
+            CurrentUserId = UserId,
+            SelectedUsers = selectedUsers
         };
         await _mediator.Send(command);
         return RedirectToAction("Index", "AdminPanel");
