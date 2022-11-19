@@ -8,23 +8,29 @@
     ViewBag.Title = "Login Page";
 }
 
-<form asp-action="Index" asp-controller="Login">
-    <div>
-        <span>@Html.ValidationMessage("NonexistentUser")</span>
-        <span>@Html.ValidationMessage("IncorrectPassword")</span>
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input asp-for="Email" type="text" id="email">
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input asp-for="Password" type="password" id="password">
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <button type="submit">Log on</button>
-    </div>
-</form>
+<div class="container mt-5 px-2">
+    <form asp-action="Index" asp-controller="Login">
+        <div>
+            <span class="error-mes">@Html.ValidationMessage("NonexistentUser")</span>
+            <span class="error-mes">@Html.ValidationMessage("IncorrectPassword")</span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            </div>
+            <input input asp-for="Email" type="text" id="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="Email"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+            </div>
+            <input input asp-for="Password" type="password" id="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-primary">Log on</button>
+        </div>
+    </form>
+</div>
 

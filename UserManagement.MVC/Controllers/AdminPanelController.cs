@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UserManagement.Application.Commands.User.Blocking;
@@ -6,9 +7,12 @@ using UserManagement.Application.Commands.User.Removing;
 using UserManagement.Application.Commands.User.Unblocking;
 using UserManagement.Application.Queries.User.GetListUsers;
 using UserManagement.Domain;
+using UserManagement.MVC.FilterAttributes;
 
 namespace UserManagement.MVC.Controllers;
 
+[ServiceFilter(typeof(UserActionsFilter))]
+[Authorize]
 public class AdminPanelController : BaseController
 {
     private readonly IMediator _mediator;
@@ -66,6 +70,7 @@ public class AdminPanelController : BaseController
     public async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
+        
         return RedirectToAction("Index", "Login");
     }
 }

@@ -38,6 +38,6 @@ public class RegistrationController : BaseController
             ModelState.AddModelError("UserExists", "The entered email is already exists");
             return View(model);
         }
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "AdminPanel");
     }
 }

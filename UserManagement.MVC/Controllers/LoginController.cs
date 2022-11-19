@@ -37,6 +37,6 @@ public class LoginController : BaseController
         {
             return View(model);
         }
-        return RedirectToAction("Index", "Login");
+        return RedirectToAction("Index", "AdminPanel");
     }
 }

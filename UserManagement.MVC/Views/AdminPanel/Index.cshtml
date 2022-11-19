@@ -1,43 +1,69 @@
-﻿@using UsersVm = UserManagement.Application.Queries.User.GetListUsers.UsersVm
-
-@model UsersVm
+﻿@model UserManagement.Application.Queries.User.GetListUsers.UsersVm
 
 @{
-    ViewBag.Title = "Admin Panel";
+    ViewData["Title"] = "Admin panel";
 }
 
-<div>
-    <button type="submit" id="d-btn" value="Send">Remove</button>
-    <button type="submit" id="b-btn" value="Send">Block</button>
-    <button type="submit" id="unb-btn" value="Send">Unblock</button>
-</div>
-<div>
-    <table>
-        <thead>
-        <tr>
-            <th scope="col"><input type="checkbox"/></th>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Last login time</th>
-            <th scope="col">Registration time</th>
-            <th scope="col">Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var user in Model.Users)
-        {
+<div class="container mt-5 px-2">
+
+    <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="flex-container">
+             <div>
+                 <button id="block-btn" class="btn btn-outline-info flex-item">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                         <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                     </svg>
+                 </button>
+             </div>
+            <div>
+                <button id="unblock-btn" class="btn btn-outline-info flex-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-hammer" viewBox="0 0 16 16">
+                        <path d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z"/>
+                    </svg>
+                </button>
+            </div>
+            <div>
+                <button id="delete-btn" class="btn btn-outline-info flex-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                    </svg>
+                </button>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div>
+        <table class="table">
+            <thead class="table-dark">
             <tr>
-                <th scope="row"><input id="boxes" value="@user.Id" type="checkbox"></th>
-                <td>@user.Id</td>
-                <td>@user.Name</td>
-                <td>@user.Email</td>
-                <td>@user.LastLoginTime</td>
-                <td>@user.RegistrationTime</td>
-                <td>@user.Status</td>
+                <th scope="col" width="10%">
+                    <input id="all-checks" type="checkbox">
+                </th>
+                <th scope="col" width="10%">Id</th>
+                <th scope="col" width="10%">Email</th>
+                <th scope="col" width="10%">UserName</th>
+                <th scope="col" width="10%">Registration date</th>
+                <th scope="col" width="10%">Last login date</th>
+                <th scope="col" width="10%">Status</th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="table-group-divider">
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <th scope="row">
+                        <input class="chboxes" value="@user.Id" type="checkbox">
+                    </th>
+                    <td>@user.Id</td>
+                    <td>@user.Email</td>
+                    <td>@user.UserName</td>
+                    <td>@user.RegistrationTime</td>
+                    <td>@user.LastLoginTime</td>
+                    <td>@user.Status</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
 </div>
-<script src="~/js/site.js" asp-append-version="true"></script>
