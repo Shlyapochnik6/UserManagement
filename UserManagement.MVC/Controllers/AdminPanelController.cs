@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using UserManagement.Application.Commands.User.Blocking;
 using UserManagement.Application.Commands.User.Removing;
+using UserManagement.Application.Commands.User.Unblocking;
 using UserManagement.Application.Queries.User.GetListUsers;
 using UserManagement.Domain;
 
@@ -51,5 +52,20 @@ public class AdminPanelController : BaseController
         };
         await _mediator.Send(command);
         return RedirectToAction("Index", "AdminPanel");
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> Unblock([FromBody] long[] selectedUsers)
+    {
+        var command = new UnblockUserCommand { SelectedUsers = selectedUsers };
+        await _mediator.Send(command);
+        return RedirectToAction("Index");
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> SignOut()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Index", "Login");
     }
 }

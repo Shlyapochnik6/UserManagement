@@ -7,6 +7,10 @@ let bBtn = document.getElementById('b-btn')
 bBtn.addEventListener('click', async function (){
     await SendServer("AdminPanel/Block", getSelectedUsers())
 });
+let unbBtn = document.getElementById('unb-btn')
+unbBtn.addEventListener('click', async function (){
+    await SendServer("AdminPanel/Unblock", getSelectedUsers())
+});
 
 async function SendServer(input, data){
     await fetch(input, {
