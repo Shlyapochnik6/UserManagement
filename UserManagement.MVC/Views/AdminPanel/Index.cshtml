@@ -1,0 +1,40 @@
+﻿@using UsersVm = UserManagement.Application.Queries.User.GetListUsers.UsersVm
+
+@model UsersVm
+
+@{
+    ViewBag.Title = "Admin Panel";
+}
+
+<div>
+    <button>Button</button>
+</div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th><input type="checkbox"/></th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Last login time</th>
+            <th>Registration time</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <th><input type="checkbox"/></th>
+                    <td class="user-id">@user.Id</td>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.LastLoginTime</td>
+                    <td>@user.RegistrationTime</td>
+                    <td>@user.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

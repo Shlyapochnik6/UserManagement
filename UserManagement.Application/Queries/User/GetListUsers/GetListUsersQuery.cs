@@ -2,7 +2,7 @@
 
 namespace UserManagement.Application.Queries.User.GetListUsers;
 
-public class GetListUsersQuery : IRequest<ListUsersVm>
+public class GetListUsersQuery : IRequest<UsersVm>
 {
     
 }

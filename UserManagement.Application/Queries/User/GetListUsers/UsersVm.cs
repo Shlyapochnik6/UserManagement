@@ -1,6 +1,6 @@
 ﻿namespace UserManagement.Application.Queries.User.GetListUsers;
 
-public class ListUsersVm 
+public class UsersVm 
 {
     public IEnumerable<Domain.User> Users { get; set; }
 }

@@ -4,6 +4,10 @@
 
 @model RegistrationViewModel
 
+@{
+    ViewBag.Title = "Registration Page";
+}
+
 <form asp-action="Index" asp-controller="Registration">
     <div>
        <span>@Html.ValidationMessage("UserExists")</span>

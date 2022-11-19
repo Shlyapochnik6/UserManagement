@@ -4,6 +4,10 @@
 
 @model LoginViewModel
 
+@{
+    ViewBag.Title = "Login Page";
+}
+
 <form asp-action="Index" asp-controller="Login">
     <div>
         <span>@Html.ValidationMessage("NonexistentUser")</span>
