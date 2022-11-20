@@ -7,7 +7,7 @@ using UserManagement.MVC.Models;
 
 namespace UserManagement.MVC.Controllers;
 
-public class RegistrationController : Controller
+public class RegistrationController : BaseController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
@@ -38,6 +38,6 @@ public class RegistrationController : Controller
             ModelState.AddModelError("UserExists", "The entered email is already exists");
             return View(model);
         }
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Index", "AdminPanel");
     }
 }

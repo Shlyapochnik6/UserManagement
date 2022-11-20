@@ -4,31 +4,45 @@
 
 @model RegistrationViewModel
 
-<form asp-action="Index" asp-controller="Registration">
-    <div>
-       <span>@Html.ValidationMessage("UserExists")</span>
-    </div>
-    <div>
-        <label for="email">Email</label>
-        <input asp-for="Email" type="text" id="email">
-        <span asp-validation-for="Email"></span>
-    </div>
-    <div>
-        <label for="name">Name</label>
-        <input asp-for="Name" type="text" id="name">
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div>
-        <label for="password">Password</label>
-        <input asp-for="Password" type="password" id="password">
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label for="confirm">Confirm password</label>
-        <input asp-for="PasswordConfirm" type="password" id="confirm">
-        <span asp-validation-for="PasswordConfirm"></span>
-    </div>
-    <div>
-        <button type="submit">Sign up</button>
-    </div>
-</form>
+@{
+    ViewBag.Title = "Registration Page";
+}
+
+<div class="container mt-5 px-2">
+    <form asp-action="Index" asp-controller="Registration">
+        <div>
+            <span>@Html.ValidationMessage("UserExists")</span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+            </div>
+            <input input asp-for="Email" type="text" id="email" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="Email"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+            </div>
+            <input input asp-for="Name" type="text" id="name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="Name"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+            </div>
+            <input input asp-for="Password" type="password" id="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="Password"></span>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Confirm</span>
+            </div>
+            <input input asp-for="PasswordConfirm" type="password" id="confirm" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <span class="error-mes" asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-outline-primary">Sign up</button>
+        </div>
+    </form>
+</div>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using UserManagement.Application.Queries.User.Constants;
 
 namespace UserManagement.Application.Commands.User.Registration;
 
@@ -28,7 +29,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
         var user = _mapper.Map<Domain.User>(request);
         user.RegistrationTime = DateTime.Now;
         user.LastLoginTime = DateTime.Now;
-        user.Status = string.Empty;
+        user.Status = AccountStatus.Active;
         user.UserName = Guid.NewGuid().ToString();
         await _userManager.CreateAsync(user, request.Password);
         await _signInManager.SignInAsync(user, false);

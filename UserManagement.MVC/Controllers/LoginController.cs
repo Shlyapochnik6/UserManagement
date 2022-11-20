@@ -6,7 +6,7 @@ using UserManagement.MVC.Models;
 
 namespace UserManagement.MVC.Controllers;
 
-public class LoginController : Controller
+public class LoginController : BaseController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
@@ -37,6 +37,6 @@ public class LoginController : Controller
         {
             return View(model);
         }
-        return RedirectToAction("Index", "Login");
+        return RedirectToAction("Index", "AdminPanel");
     }
 }

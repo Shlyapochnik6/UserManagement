@@ -2,7 +2,7 @@
 
 public static class AccountStatus
 {
-    public const string Default = "Default";
+    public const string Active = "Active";
     
     public const string Blocked = "Blocked";
 }
