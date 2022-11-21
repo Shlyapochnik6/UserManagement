@@ -14,7 +14,7 @@ public static class DependencyInjection
         var connectionString = configuration["DbConnection"];
         services.AddDbContext<UserManagementDbContext>(options =>
         {
-            options.UseSqlServer(connectionString);
+            options.UseNpgsql(connectionString);
         });
 
         services.AddScoped<IUserManagementDbContext, UserManagementDbContext>();

@@ -27,8 +27,8 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
             return false;
         }
         var user = _mapper.Map<Domain.User>(request);
-        user.RegistrationTime = DateTime.Now;
-        user.LastLoginTime = DateTime.Now;
+        user.RegistrationTime = DateTime.UtcNow;
+        user.LastLoginTime = DateTime.UtcNow;
         user.Status = AccountStatus.Active;
         user.UserName = Guid.NewGuid().ToString();
         await _userManager.CreateAsync(user, request.Password);
