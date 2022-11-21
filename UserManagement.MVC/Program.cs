@@ -1,3 +1,4 @@
+using System.Net;
 using System.Reflection;
 using Microsoft.AspNetCore.Identity;
 using UserManagement.Application;
@@ -12,6 +13,12 @@ using UserManagement.Persistence.Initializers;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+        options.Listen(IPAddress.Any, Convert.ToInt32(Environment.GetEnvironmentVariable("PORT")));
+});
 
 builder.Services.AddAutoMapper(config =>
 {

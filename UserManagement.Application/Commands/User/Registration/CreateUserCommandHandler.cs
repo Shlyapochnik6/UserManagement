@@ -32,7 +32,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, bool>
         user.Status = AccountStatus.Active;
         user.UserName = Guid.NewGuid().ToString();
         await _userManager.CreateAsync(user, request.Password);
-        await _signInManager.SignInAsync(user, false);
+        await _signInManager.SignInAsync(user, true);
         return true;
     }
 }
